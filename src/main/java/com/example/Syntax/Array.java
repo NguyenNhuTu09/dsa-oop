@@ -5,7 +5,6 @@ import java.util.HashMap;
 public class Array {
     // dịch mảng a sang phải K lần
     public static int[] solution(int[] a, int K){
-        int n = a.length;
         if (a.length == 0 || K % a.length == 0) return a;
         K = K % a.length;
         for(int i = 1; i <= K; i++){ 
@@ -52,17 +51,57 @@ public class Array {
         return result;
     }
 
-    // cho 1 mảng số nguyên A
-    // trả về một mảng số là các phần tử của A chưa từng lặp lại tại mỗi
-    // thời điểm khi duyệt từ trái sang phải
-    // nếu phần tử đó đã từng lặp lại, trả về -1
-    public static int[] solutionTask01ChatGPT(int []A){
+    public static void SubarraySumEqualsK(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int count = 0;
+        int sum = 0;
 
-        return A;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+
+            if (sum == k) {
+                count++;
+            }
+
+            if (map.containsKey(sum - k)) {
+                count += map.get(sum - k);
+            }
+
+            map.put(sum, map.getOrDefault(sum, 0) + 1);
+        }
+
+        System.out.println("Count of subarrays with sum " + k + ": " + count);
+    }
+
+    public static void ProductofArrayExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        int[] result = new int[n];
+
+        left[0] = 1;
+        for (int i = 1; i < n; i++) {
+            left[i] = left[i - 1] * nums[i - 1];
+        }
+
+        right[n - 1] = 1;
+        for (int i = n - 2; i >= 0; i--) {
+            right[i] = right[i + 1] * nums[i + 1];
+        }
+
+        for (int i = 0; i < n; i++) {
+            result[i] = left[i] * right[i];
+        }
+
+        System.out.print("Product of array except self: ");
+        for (int num : result) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
     }
     
-    public static void main(String[] args) {
-       
-        
+    
+    public static void main(Character[] args) {
+       System.out.println("Hello, Array!");
     }
 }
