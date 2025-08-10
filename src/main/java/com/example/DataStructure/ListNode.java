@@ -67,6 +67,33 @@ public class ListNode {
         tail.next = a == null ? b : a;
         return dummy.next;
     }
+
+    public Node reverseList(Node head){
+        Node prev = null;
+        Node current = head;
+        while(current != null){
+            Node nextTemp = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextTemp;
+        }
+        return prev;
+    }
+
+    public void deleteByValue(Node head, int value){
+        if(head == null) return;
+        if(head.data == value){
+            head = head.next;
+            return;
+        }
+        Node current = head;
+        while(current.next != null && current.next.data != value){
+            current = current.next;
+        }
+        if(current.next != null){
+            current.next = current.next.next;
+        }
+    }
     public static void main(String[] args) {
         Node a = new Node(1);
         Node b = new Node(2);
