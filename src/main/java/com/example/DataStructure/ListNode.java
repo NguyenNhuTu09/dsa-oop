@@ -94,6 +94,35 @@ public class ListNode {
             current.next = current.next.next;
         }
     }
+
+
+    // ...existing code...
+    public static Node detectCycle(Node head) {
+        Node slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                Node start = head;
+                while (start != slow) {
+                    start = start.next;
+                    slow = slow.next;
+                }
+                return start;
+            }
+        }
+        return null;
+    }
+
+    // ...existing code...
+    public Node findMiddle(Node head) {
+        Node slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
     public static void main(String[] args) {
         Node a = new Node(1);
         Node b = new Node(2);
