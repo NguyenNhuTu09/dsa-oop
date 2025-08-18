@@ -96,7 +96,6 @@ public class ListNode {
     }
 
 
-    // ...existing code...
     public static Node detectCycle(Node head) {
         Node slow = head, fast = head;
         while (fast != null && fast.next != null) {
@@ -114,7 +113,8 @@ public class ListNode {
         return null;
     }
 
-    // ...existing code...
+    
+
     public Node findMiddle(Node head) {
         Node slow = head, fast = head;
         while (fast != null && fast.next != null) {
@@ -123,6 +123,51 @@ public class ListNode {
         }
         return slow;
     }
+
+    public Node removeKthFromEnd(Node head, int k) {
+        Node dummy = new Node(0);
+        dummy.next = head;
+        Node fast = dummy, slow = dummy;
+        for (int i = 0; i <= k; i++) {
+            if (fast == null) return head;
+            fast = fast.next;
+        }
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        if (slow.next != null) {
+            slow.next = slow.next.next;
+        }
+        return dummy.next;
+    }
+
+    public boolean isPalindrome(Node head) {
+        if (head == null || head.next == null) return true;
+        // Find middle
+        Node slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        // Reverse second half
+        Node prev = null, curr = slow;
+        while (curr != null) {
+            Node nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+        // Compare two halves
+        Node first = head, second = prev;
+        while (second != null) {
+            if (first.data != second.data) return false;
+            first = first.next;
+            second = second.next;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         Node a = new Node(1);
         Node b = new Node(2);
