@@ -23,9 +23,8 @@ class HashTableCustom {
 
     public void insertItem(int key) {
         int index = hashFunction(key);
-        List<Integer> chain = table.get(index); // lấy giá trị của phần tử có chỉ số index trong ArrayList bằng phương thức get
-        // để biết rằng phần tử sắp được thêm vào sẽ nằm ở chỉ số nào trong bảng băm
-        if (!chain.contains(key)) { // đảm bảo rằng giá trị thêm vào không trùng lặp với những gía trị đã thêm trước đó
+        List<Integer> chain = table.get(index); 
+        if (!chain.contains(key)) { 
             chain.add(key);
         }
     }
@@ -39,6 +38,11 @@ class HashTableCustom {
             System.out.println();
         }
     }
+    public boolean searchItem(int key) {
+        int index = hashFunction(key);          // Tìm bucket index
+        List<Integer> chain = table.get(index); // Lấy bucket
+        return chain.contains(key);             // Kiểm tra key có trong bucket không
+    }   
 }
 
 public class HashTable {
@@ -50,7 +54,8 @@ public class HashTable {
         hashTable.insertItem(284);
         hashTable.insertItem(28);
         hashTable.insertItem(284);
-
+        hashTable.insertItem(571);
         hashTable.displayHashTable(); // In các bucket và các phần tử trong bảng băm
+        System.out.println("Search 2134: " + hashTable.searchItem(2134));
     }
 }
