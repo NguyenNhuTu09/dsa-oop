@@ -22,7 +22,7 @@ public class MyThread01 {
         t1.start(); // start() là phương thưucs để khởi động 1 thread mới
         // KHi gọi start() thì JVM sẽ tạo 1 luồng mới và gọi phương thức run() của đối tượng Thread đó
 
-        myRunnable r1 = new myRunnable();
+        Runnable r1 = new myRunnable();
         Thread t2 = new Thread(r1); // tạo 1 đối tượng Thread mới, truyền vào đối tượng Runnable
         t2.start(); // gọi start() để khởi động thread
         
