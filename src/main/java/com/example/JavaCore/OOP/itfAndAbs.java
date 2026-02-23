@@ -103,9 +103,9 @@ class Audi implements car{
 public class itfAndAbs {
     public static void main(String[] args) {
         HinhHoc hcn = new HinhChuNhat(5, 10, "Red");
-        hcn.tinhDienTich();
-        hcn.tinhChuVi();
-        hcn.test();
+        // hcn.tinhDienTich();
+        // hcn.tinhChuVi();
+        // hcn.test();
 
         // car bmw = new BMW();
         // bmw.start();    

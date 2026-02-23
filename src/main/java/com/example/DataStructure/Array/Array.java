@@ -87,6 +87,19 @@ public class Array {
         System.out.println("Count of subarrays with sum " + k + ": " + count);
     }
 
+    public static int reverseInteger(int x){
+        long solutionResult = 0;
+        while(x != 0){
+            int k = x % 10;
+            solutionResult = solutionResult * 10 + k;
+            if(solutionResult > Integer.MAX_VALUE || solutionResult < Integer.MIN_VALUE){
+                return 0;
+            }
+            x /= 10;
+        }
+        return (int) solutionResult;
+    }
+
     public static void ProductofArrayExceptSelf(int[] nums) {
         int n = nums.length;
         int[] left = new int[n];

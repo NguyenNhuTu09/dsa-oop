@@ -15,10 +15,12 @@ class testStaticComponent{
     public void setComponentName(String componentName) {
         testStaticComponent.componentName = componentName;
     }
-    public static void testMethodStatic(){ // phương thức static chỉ có thể truy cập các biến static
+    public static void testMethodStatic(){ 
         System.out.println("This is a static method" + componentName);
+        // phuong thức static chỉ có thể truy cập các biến static
+        // System.err.println(name); // lỗi vì name không phải static
     }
-    public static class staticNestedClass{ // lớp static nested class chỉ có thể truy cập các biến static
+    public static class staticNestedClass{ 
         public static int testValue = 10;
         public staticNestedClass() {
             testValue++;
@@ -51,6 +53,7 @@ public class componentStatic {
         nestedObj2.display();
 
         testStaticComponent.testMethodStatic();
+        System.err.println(testStaticComponent.staticNestedClass.testValue);
     }
 }
     

@@ -1,10 +1,6 @@
 package com.example.JavaCore.CustomImplementation;
 
 import java.util.LinkedList;
-
-// <> chỉ được dùng trong khai báo kiểu genegic(class, interface, method) hoặc khởi tạo đối tượng
-
-
 public class HashMapImpl<K, V> {
     private static class Entry<K, V>{
         K key;
